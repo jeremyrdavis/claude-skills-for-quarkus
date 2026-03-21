@@ -33,7 +33,7 @@ Default to:
 - **Persistence:** Hibernate ORM with Panache (`PanacheRepository`)
 - **Messaging:** Kafka via MicroProfile Reactive Messaging (`@Channel`, `Emitter`)
 - **REST:** Quarkus REST (Jakarta REST / JAX-RS)
-- **Java version:** 21 (use records, sealed classes where appropriate)
+- **Java version:** 25 (use records, sealed classes where appropriate)
 
 If the user requests a different stack (e.g., Reactive Hibernate, RabbitMQ, Active Record pattern), adapt accordingly.
 
