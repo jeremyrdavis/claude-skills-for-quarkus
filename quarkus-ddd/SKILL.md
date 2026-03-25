@@ -35,6 +35,8 @@ Default to:
 - **REST:** Quarkus REST (Jakarta REST / JAX-RS)
 - **Java version:** 25 (use records, sealed classes where appropriate)
 
+If the user hasn't specified a Java version, ask which version they'd like to use and suggest 25 as the default.
+
 If the user requests a different stack (e.g., Reactive Hibernate, RabbitMQ, Active Record pattern), adapt accordingly.
 
 ## Package Structure
