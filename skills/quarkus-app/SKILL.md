@@ -71,7 +71,7 @@ quarkus create app {groupId}:{artifactId}:{version} \
 **Installation note** (include if user might not have CLI):
 ```bash
 # Via SDKMAN (recommended)
-sdk install quarkusio
+sdk install quarkus
 
 # Via JBang
 curl -Ls https://sh.jbang.dev | bash -s - trust add https://repo1.maven.org/maven2/io/quarkus/quarkus-cli/
