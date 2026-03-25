@@ -133,7 +133,6 @@ public record SessionCreatedEvent(String sessionId, String title) {
 
 - Records with only the data other bounded contexts need
 - Do NOT include the full aggregate state — keep events lean
-- Include a Javadoc quote from Vaughn Vernon
 
 ### 3. Command (`domain/services/`)
 
@@ -203,7 +202,6 @@ Key rules:
 - The aggregate owns the decision of what domain events to emit — services do not create events
 - Factory methods return a Result record, not the aggregate itself
 - Fields are package-private, getters are public
-- Include a Javadoc quote from Eric Evans
 
 ### 6. DTO (`infrastructure/`)
 
@@ -248,7 +246,6 @@ public class SessionEventPublisher {
 
 - Outbound adapter — handles Kafka transport details
 - Channel name matches the subdomain name (e.g., `sessions`)
-- Include Cockburn Javadoc quote
 
 ### 8. Application Service (`domain/services/`)
 
