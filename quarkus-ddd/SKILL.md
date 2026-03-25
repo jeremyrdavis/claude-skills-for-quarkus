@@ -1,5 +1,5 @@
 ---
-name: ddd-quarkus
+name: quarkus-ddd
 description: "Scaffold and generate Domain-Driven Design components with Hexagonal Architecture in Quarkus projects. Use this skill whenever the user wants to create a new bounded context, add an aggregate, create value objects, scaffold a DDD module, add a new subdomain, or generate any DDD tactical pattern (aggregate, entity, value object, command, event, repository, service, endpoint) in a Quarkus/Java project. Also trigger when the user mentions 'hexagonal architecture', 'ports and adapters', or asks to add a new feature following DDD patterns."
 ---
 
