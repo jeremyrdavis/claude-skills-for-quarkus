@@ -3,18 +3,22 @@
 Quick lookup for commonly requested extensions. Use the **short name** in CLI `-x=` or Maven `-Dextensions=`.
 For Quarkiverse extensions, use full coordinates where noted.
 
+Names verified against Quarkus 3.3x. When in doubt, confirm with `quarkus ext ls -i -s=<term>` — the platform
+catalog is the source of truth, not this table.
+
+**(DS)** = triggers DevServices: Quarkus auto-starts the backing container in dev/test mode, no manual setup.
+
 ---
 
 ## REST / Web
 
 | Short Name | Description |
 |---|---|
-| `rest-jackson` | RESTEasy Reactive + Jackson JSON (preferred for new apps) |
-| `rest` | RESTEasy Reactive (no JSON serialization) |
-| `rest-jsonb` | RESTEasy Reactive + JSON-B (alternative to Jackson) |
-| `resteasy-reactive-jackson` | Alias — same as `rest-jackson` |
-| `rest-client-jackson` | REST Client Reactive + Jackson (call external services) |
-| `rest-client` | REST Client Reactive (no JSON) |
+| `rest-jackson` | Quarkus REST + Jackson JSON (preferred for new apps) |
+| `rest` | Quarkus REST (no JSON serialization) |
+| `rest-jsonb` | Quarkus REST + JSON-B (alternative to Jackson) |
+| `rest-client-jackson` | Quarkus REST Client + Jackson (call external services) |
+| `rest-client` | Quarkus REST Client (no JSON) |
 | `websockets-next` | Modern WebSocket support |
 
 ---
@@ -26,11 +30,11 @@ For Quarkiverse extensions, use full coordinates where noted.
 | `hibernate-orm` | Hibernate ORM (standard JPA) |
 | `hibernate-orm-panache` | Panache Active Record + Repository pattern |
 | `hibernate-reactive-panache` | Reactive Panache (use with reactive stack) |
-| `jdbc-postgresql` | JDBC driver for PostgreSQL (triggers DevServices) |
-| `jdbc-mysql` | JDBC driver for MySQL |
+| `jdbc-postgresql` | JDBC driver for PostgreSQL **(DS)** |
+| `jdbc-mysql` | JDBC driver for MySQL **(DS)** |
 | `jdbc-h2` | H2 in-memory DB (test/dev only) |
-| `mongodb-panache` | MongoDB with Panache |
-| `redis-client` | Redis client |
+| `mongodb-panache` | MongoDB with Panache **(DS)** |
+| `redis-client` | Redis client **(DS)** |
 | `flyway` | Flyway database migrations |
 | `liquibase` | Liquibase database migrations |
 
@@ -40,9 +44,9 @@ For Quarkiverse extensions, use full coordinates where noted.
 
 | Short Name | Description |
 |---|---|
-| `messaging-kafka` | Kafka reactive messaging (SmallRye Reactive Messaging) |
-| `messaging-amqp` | AMQP 1.0 reactive messaging |
-| `messaging-rabbitmq` | RabbitMQ reactive messaging |
+| `messaging-kafka` | Kafka reactive messaging (SmallRye Reactive Messaging) **(DS)** |
+| `messaging-amqp` | AMQP 1.0 reactive messaging **(DS)** |
+| `messaging-rabbitmq` | RabbitMQ reactive messaging **(DS)** |
 
 ---
 
@@ -50,10 +54,10 @@ For Quarkiverse extensions, use full coordinates where noted.
 
 | Short Name | Description |
 |---|---|
-| `oidc` | OpenID Connect (Keycloak, Azure AD, etc.) |
+| `oidc` | OpenID Connect — Keycloak, Azure AD, etc. **(DS — Keycloak)** |
 | `oidc-client` | OIDC client for calling secured services |
-| `security-jwt` | JWT-based security |
-| `smallrye-jwt` | SmallRye JWT (generate + verify JWTs) |
+| `smallrye-jwt` | JWT verification + role-based security (MicroProfile JWT) |
+| `smallrye-jwt-build` | JWT generation (issue/sign tokens) — pair with `smallrye-jwt` to verify |
 
 ---
 
@@ -84,7 +88,7 @@ For Quarkiverse extensions, use full coordinates where noted.
 | Coordinates | Description |
 |---|---|
 | `io.quarkiverse.langchain4j:quarkus-langchain4j-openai` | LangChain4j + OpenAI |
-| `io.quarkiverse.langchain4j:quarkus-langchain4j-ollama` | LangChain4j + Ollama (local models) |
+| `io.quarkiverse.langchain4j:quarkus-langchain4j-ollama` | LangChain4j + Ollama (local models) **(DS — Ollama)** |
 | `io.quarkiverse.langchain4j:quarkus-langchain4j-azure-openai` | LangChain4j + Azure OpenAI |
 | `io.quarkiverse.mcp:quarkus-mcp-server-sse` | MCP Server (SSE transport) |
 
