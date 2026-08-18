@@ -1,76 +1,100 @@
-# claude-skills-for-quarkus
+# agentic-skills-for-quarkus
 
-Claude Code skills for building Quarkus applications. Includes skills for project scaffolding and Domain-Driven Design with Hexagonal Architecture.
+GitHub Copilot and Claude Code skills for building Quarkus applications.
 
-## Skills
+This repository provides a small set of focused skills that help an AI assistant guide you through two common kinds of work:
 
-### quarkus-app
+- **Bootstrapping Quarkus applications** with the right platform, extensions, and runtime choices.
+- **Scaffolding DDD and Hexagonal Architecture components** inside Quarkus projects.
 
-Scaffolds and maintains Quarkus applications. Handles project generation (CLI or Maven plugin), extension management, version upgrades, and Red Hat Build of Quarkus (RHBQ) support.
+Each skill is designed to work as an agent instruction set. You ask for a task in natural language, the assistant loads the relevant skill, gathers the required details, and then generates the appropriate project structure, code, or configuration.
 
-### quarkus-ddd (ddd-quarkus)
+## Available skills
 
-Scaffolds DDD tactical patterns — aggregates, value objects, commands, domain events, repositories, services, and endpoints — using Hexagonal Architecture (Ports and Adapters) in Quarkus projects.
+### `quarkus-app`
+Use this skill when you want to create or maintain a Quarkus application.
+
+It helps with:
+- Creating a new Quarkus project
+- Choosing the build tool and Java version
+- Adding or updating extensions
+- Keeping versions aligned with the latest Quarkus platform
+- Supporting Red Hat Build of Quarkus when needed
+
+### `quarkus-ddd`
+Use this skill when you want to model a new bounded context or add DDD tactical patterns to a Quarkus application.
+
+It helps with:
+- Bounded contexts and subdomains
+- Aggregates and value objects
+- Commands, domain events, and result records
+- Application services
+- REST endpoints and DTOs
+- Persistence entities and repositories
+- Hexagonal Architecture / Ports and Adapters structure
+
+## Repository structure
+
+- `skills/quarkus-app/` — Quarkus application scaffolding and maintenance guidance
+- `skills/quarkus-ddd/` — DDD and Hexagonal Architecture scaffolding guidance
+
+## How to use these skills with Claude
+
+This repository is primarily intended for **Claude Code** skill installation.
+
+### Install from GitHub
+
+```bash
+claude mcp add-skill https://github.com/jeremyrdavis/agentic-skills-for-quarkus/tree/main/skills/quarkus-app
+claude mcp add-skill https://github.com/jeremyrdavis/agentic-skills-for-quarkus/tree/main/skills/quarkus-ddd
+```
+
+### Install from a local clone
+
+```bash
+git clone https://github.com/jeremyrdavis/agentic-skills-for-quarkus.git
+claude mcp add-skill ./agentic-skills-for-quarkus/skills/quarkus-app
+claude mcp add-skill ./agentic-skills-for-quarkus/skills/quarkus-ddd
+```
+
+### Example prompts
+
+- “Create a new Quarkus REST API with PostgreSQL persistence.”
+- “Add Kafka messaging and health checks to my Quarkus app.”
+- “Create an orders bounded context with an Order aggregate and value objects for line items.”
+- “Add a new aggregate to the catalog subdomain.”
+
+Claude will load the matching skill and use its instructions to gather the right inputs before generating code.
+
+## How to use these skills with Codex
+
+Codex can use the same skill content as guidance for generating or modifying code in this repository or in your Quarkus projects.
+
+### Typical workflow
+
+1. Point Codex at the repository or copy the relevant skill into your working context.
+2. Ask for the task you want done in natural language.
+3. Let Codex follow the skill instructions to gather missing details, decide on structure, and produce the output.
+
+### Example prompts
+
+- “Use the Quarkus app skill to scaffold a new service with REST and PostgreSQL.”
+- “Use the DDD skill to add a new payments bounded context.”
+- “Follow the repo’s Quarkus DDD conventions and generate the aggregate, command, event, service, and endpoint.”
+
+### Notes for Codex users
+
+- The skills are written as reusable instructions, so Codex can treat them as a playbook for Quarkus work.
+- If you are editing this repository, keep new skills aligned with the existing folder layout under `skills/`.
+- When a task involves both application bootstrap and DDD modeling, use `quarkus-app` first, then `quarkus-ddd`.
 
 ## Prerequisites
 
-- [Claude Code](https://docs.anthropic.com/en/docs/claude-code) installed and authenticated
-- Java 25 (or your preferred version — skills will ask)
-- [Quarkus CLI](https://quarkus.io/guides/cli-tooling) recommended (Maven plugin works as a fallback)
+- Java 25 or your preferred version
 - Maven or Gradle
+- Quarkus CLI recommended for app scaffolding
+- Claude Code or Codex, depending on your workflow
 
-## Installation
+## Contributing
 
-Install skills directly from GitHub using the Claude Code CLI:
-
-```bash
-# Install both skills
-claude mcp add-skill https://github.com/jeremyrdavis/claude-skills-for-quarkus/tree/main/quarkus-app
-claude mcp add-skill https://github.com/jeremyrdavis/claude-skills-for-quarkus/tree/main/quarkus-ddd
-```
-
-Or clone the repository and install locally:
-
-```bash
-git clone https://github.com/jeremyrdavis/claude-skills-for-quarkus.git
-claude mcp add-skill ./claude-skills-for-quarkus/quarkus-app
-claude mcp add-skill ./claude-skills-for-quarkus/quarkus-ddd
-```
-
-## Usage Examples
-
-### Create a new Quarkus application
-
-```
-> Create a Quarkus REST API with PostgreSQL persistence
-```
-
-Claude will use the **quarkus-app** skill to ask for your project parameters (groupId, artifactId, Java version, extensions) and generate the project using the Quarkus CLI.
-
-### Add extensions to an existing project
-
-```
-> Add Kafka messaging and health checks to my Quarkus app
-```
-
-### Scaffold a DDD bounded context
-
-```
-> Create a new "orders" bounded context with an Order aggregate that has orderId, customer name, and a list of line items
-```
-
-Claude will use the **ddd-quarkus** skill to gather your domain details and scaffold the full Hexagonal Architecture — domain layer (aggregate, value objects, commands, events), infrastructure layer (REST endpoint, DTOs, event publisher), and persistence layer (JPA entities, Panache repository).
-
-### Add a new aggregate to an existing context
-
-```
-> Add a Product aggregate to the catalog subdomain with name, description, and price
-```
-
-### Use both skills together
-
-```
-> Create a new Quarkus microservice for conference management with a Sessions bounded context
-```
-
-Claude will first scaffold the Quarkus project with the right extensions, then generate the DDD structure for the Sessions domain.
+If you add new skills, keep them focused, well-documented, and consistent with the existing naming and directory conventions.
